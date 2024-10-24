@@ -268,7 +268,7 @@ header {
         height: 180%;
 
         font-family: Arial, sans-serif;
-        background-image: url('/images/fon.jpg');
+        background-image: url('https://raw.githubusercontent.com/nrksu1tan/xix-lectures/refs/heads/main/images/fon.jpg');
         background-size: cover;
         background-position: center;
         display: flex; /* Исправил ошибку здесь */
