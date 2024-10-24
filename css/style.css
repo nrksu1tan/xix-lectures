@@ -1,0 +1,313 @@
+body, html {
+    margin: 30px;
+    padding: 0px;
+    height: 100%;
+    font-family: Arial, sans-serif;
+    background-image: url('/images/fon.jpg');
+    background-size: cover;
+    background-position: center;
+    display: flex; /* Исправил ошибку здесь */
+    justify-content: center; /* Центровка по горизонтали */
+    align-items: center; /* Центровка по вертикали */
+    
+}
+
+
+
+
+
+/* Модальное окно - фоновая область */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8);
+    overflow: hidden;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+/* Показ модального окна */
+.modal.show {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 1;
+}
+
+/* Контент модального окна */
+.modal-content {
+    background-color: #1e1e1e;
+    padding: 30px;
+    border-radius: 10px;
+    width: 80%;
+    max-width: 700px;
+    max-height: 80vh;
+    overflow-y: auto;
+    box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.5);
+    position: relative;
+    color: #f1f1f1;
+}
+
+/* Кнопка закрытия модального окна */
+.close {
+    color: #fff;
+    position: absolute;
+    top: 15px;
+    right: 20px;
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.close:hover {
+    color: #ffcc00;
+}
+
+/* Стили для текста лекции */
+#modal-text {
+    text-align: left;
+    line-height: 1.6;
+}
+
+.copy-button {
+    display: inline-block;
+    background-color: #ffcc00; /* Золотистый цвет */
+    color: black;
+    padding: 10px 20px;
+    margin-top: 20px;
+    font-size: 16px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.copy-button:hover {
+    background-color: #e6b800;
+}
+
+.success-message {
+    margin-top: 15px;
+    padding: 10px;
+    background-color: #4CAF50; /* Зеленый цвет */
+    color: white;
+    border-radius: 5px;
+    font-size: 14px;
+    animation: fadeInOut 3s forwards;
+}
+
+/* Анимация появления и исчезновения сообщения */
+@keyframes fadeInOut {
+    0% { opacity: 0; }
+    10% { opacity: 1; }
+    90% { opacity: 1; }
+    100% { opacity: 0; }
+}
+
+/* Анимация появления модального окна */
+@keyframes modalFadeIn {
+    from { opacity: 0; transform: scale(0.9); }
+    to { opacity: 1; transform: scale(1); }
+}
+
+.modal.show .modal-content {
+    animation: modalFadeIn 0.3s ease;
+}
+
+
+
+.container {
+    background-color: rgba(0, 0, 0, 0.8); /* Темный, полупрозрачный фон */
+    color: white;
+    width: 90%;
+    max-width: 900px;
+    padding: 40px; /* Увеличенные отступы */
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5); /* Тень для выделения */
+    backdrop-filter: blur(10px); /* Размытие фона под контейнером */
+    min-height: 80vh; /* Минимальная высота контейнера - 80% высоты экрана */
+    margin: 20px 0; /* Отступы сверху и снизу */
+    border: 2px solid #ffcc00; /* Обводка: толщина 2px, сплошная линия, цвет золотистый */
+    position: relative; /* Относительное позиционирование контейнера */
+    
+}
+
+header {
+    text-align: center;
+    padding-bottom: 20px;
+    position: relative; /* Относительное позиционирование для заголовка */
+ 
+}
+
+
+.header img {
+    max-width: 100px;
+    border-radius: 50%;
+    position: absolute; /* Абсолютное позиционирование изображения */
+    top: -50px; /* Поднимаем изображение выше контейнера */
+    left: 50%; /* Центрируем изображение по горизонтали */
+    transform: translateX(-50%); /* Для идеального центрирования */
+    border: 3px solid white; /* Добавляем обводку к изображению */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5); /* Тень для изображения */
+    backdrop-filter: blur(100px); /* Размытие фона под контейнером */
+    
+}
+
+
+/* Стили для баннера */
+.banner {
+    width: 100%;
+    height: 100px; /* Уменьшенная высота баннера */
+    background-image: url('/images/banner.png'); /* Фоновое изображение для баннера */
+    background-size: cover;
+    background-position: center;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 0;
+    border-radius: 10px 10px 0 0; /* Скругляем верхние углы */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3); /* Добавляем тень для глубины */
+    border-bottom: 3px solid #ffcc00;
+}
+.header h1{
+    margin: 30px 0;
+    text-align: center;
+    padding-top: 40px;
+    
+}
+
+.header p{
+    margin-top: -20px;
+    text-align: center;
+}
+
+.lectures {
+    list-style-type: none;
+    padding: 0;
+}
+
+.lectures li {
+    margin: 10px 0;
+    font-size: 15px;
+}
+
+.lectures li a {
+    color: #ffcc00;
+    text-decoration: none;
+}
+
+.lectures li a:hover {
+    text-decoration: underline;
+}
+
+.lecture-content {
+    margin-top: 20px;
+    padding: 20px;
+    background-color: rgba(0, 0, 0, 0.1); /* Легкий фон */
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    display: none; /* Изначально скрываем текст */
+    color: black; /* Цвет текста */
+}
+
+
+.footer {
+    position: absolute;
+    bottom: 20px;
+    left: 0;
+    right: 0;
+    text-align: center;
+    font-size: 14px;
+}
+
+.syllabus-button {
+    display: inline-block;
+    background-color: #ffcc00; /* Золотистый цвет кнопки */
+    color: black; /* Цвет текста */
+    padding: 10px 20px;
+    font-size: 16px;
+    border: none;
+    border-radius: 5px;
+    text-align: center;
+    margin-bottom: 20px;
+    cursor: pointer;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.3s ease, filter 0.3s ease; /* Плавные переходы */
+}
+
+.syllabus-button:hover {
+    animation: sparkle 0.8s infinite; /* Анимация при наведении */
+}
+
+/* Анимация сверкающего эффекта */
+.syllabus-button:hover {
+    animation: sparkle 2s infinite; /* Длительность анимации 2 секунды */
+}
+
+@keyframes sparkle {
+    0%, 100% {
+        filter: brightness(1); /* Обычная яркость */
+    }
+    50% {
+        filter: brightness(1.5); /* Сверкающая яркость */
+    }
+}
+
+
+
+@media screen and (max-width: 768px) {
+
+    body, html {
+        margin: 2px;
+        padding: 1px;
+        height: 180%;
+
+        font-family: Arial, sans-serif;
+        background-image: url('/images/fon.jpg');
+        background-size: cover;
+        background-position: center;
+        display: flex; /* Исправил ошибку здесь */
+        justify-content: center; /* Центровка по горизонтали */
+        align-items: center; /* Центровка по вертикали */
+        
+    }
+
+
+
+    .container {
+        background-color: rgba(0, 0, 0, 0.8); /* Темный, полупрозрачный фон */
+        color: white;
+        width: 90%;
+        max-width: 100vw;
+        padding: 60px; /* Увеличенные отступы */
+        border-radius: 10px;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5); /* Тень для выделения */
+        backdrop-filter: blur(10px); /* Размытие фона под контейнером */
+        min-height: 80vh; /* Минимальная высота контейнера - 80% высоты экрана */
+        margin: 20px 0; /* Отступы сверху и снизу */
+        border: 2px solid #ffcc00; /* Обводка: толщина 2px, сплошная линия, цвет золотистый */
+        position: relative; /* Относительное позиционирование контейнера */
+        
+    }
+
+
+    .header h1{
+        margin: 30px 0;
+        text-align: center;
+        padding-top: 40px;
+        font-size: 40px;
+    }
+    
+    .header p{
+        margin-top: -20px;
+        text-align: center;
+    }
+
+
+}
+
