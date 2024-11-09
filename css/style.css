@@ -322,7 +322,7 @@ header {
 .banner {
     width: 100%;
     height: 100px; /* Уменьшенная высота баннера */
-    background-image: url('https://raw.githubusercontent.com/nrksu1tan/xix-lectures/refs/heads/main/images/banner.png'); /* Фоновое изображение для баннера */
+    background-image: url('https://raw.githubusercontent.com/nrksu1tan/xix-lectures/refs/heads/main/images/banka.png'); /* Фоновое изображение для баннера */
     background-size: cover;
     background-position: center;
     position: absolute;
