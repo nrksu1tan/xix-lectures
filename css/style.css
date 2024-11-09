@@ -3,7 +3,7 @@ body, html {
     padding: 0px;
     height: 100%;
     font-family: Arial, sans-serif;
-    background-image: url('https://raw.githubusercontent.com/nrksu1tan/xix-lectures/refs/heads/main/images/fon.jpg');
+    background-image: url('/images/fon.jpg');
     background-size: cover;
     background-position: center;
     display: flex; /* Исправил ошибку здесь */
@@ -121,21 +121,79 @@ body, html {
 
 
 
+/* Основной стиль контейнера */
+/* Основной стиль контейнера */
+/* Основной стиль контейнера */
 .container {
-    background-color: rgba(0, 0, 0, 0.8); /* Темный, полупрозрачный фон */
+    background-color: rgba(0, 0, 0, 0.8);
     color: white;
     width: 90%;
     max-width: 900px;
-    padding: 40px; /* Увеличенные отступы */
+    padding: 40px;
     border-radius: 10px;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5); /* Тень для выделения */
-    backdrop-filter: blur(10px); /* Размытие фона под контейнером */
-    min-height: 80vh; /* Минимальная высота контейнера - 80% высоты экрана */
-    margin: 20px 0; /* Отступы сверху и снизу */
-    border: 2px solid #ffcc00; /* Обводка: толщина 2px, сплошная линия, цвет золотистый */
-    position: relative; /* Относительное позиционирование контейнера */
-    
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(10px);
+    min-height: 80vh;
+    margin: 20px auto;
+    border: 2px solid #ffcc00; /* Золотистая обводка */
+    position: relative;
+    z-index: 1;
 }
+
+/* Псевдоэлементы для анимации вокруг контейнера */
+.container::before,
+.container::after {
+    content: '';
+    position: absolute;
+    top: -10%;
+    left: -10%;
+    width: 120%;
+    height: 120%;
+    border-radius: 50%;
+    z-index: -1; /* За контейнером */
+    pointer-events: none;
+    animation: pulse-border 3s infinite ease-in-out;
+}
+
+/* Первый слой сине-фиолетового цвета */
+.container::before {
+    background: radial-gradient(circle, rgba(0, 122, 255, 0.3), transparent 70%);
+    animation-delay: 0s;
+}
+
+/* Второй слой красно-оранжевого цвета */
+.container::after {
+    background: radial-gradient(circle, rgba(255, 0, 100, 0.3), transparent 70%);
+    animation-delay: 1.5s;
+}
+
+/* Анимация пульсации */
+@keyframes pulse-border {
+    0% {
+        transform: scale(1);
+        opacity: 0.8;
+    }
+    50% {
+        transform: scale(1.15);
+        opacity: 0.5;
+    }
+    100% {
+        transform: scale(1);
+        opacity: 0.8;
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
 
 header {
     text-align: center;
@@ -158,12 +216,113 @@ header {
     
 }
 
+/* Стиль для панели информации о сайте */
+/* Панель информации о сайте */
+.site-info-panel {
+    position: fixed;
+    bottom: -200px;
+    width: 100%;
+    background: linear-gradient(135deg, #333, #555); /* Градиент для более интересного фона */
+    color: #fff;
+    padding: 20px;
+    transition: bottom 0.5s ease, box-shadow 0.5s ease; /* Плавные переходы */
+    box-shadow: 0 -4px 15px rgba(0, 0, 0, 0.6);
+    font-size: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 10;
+    border-top: 2px solid rgba(255, 255, 255, 0.2);
+    border-radius: 10px 10px 0 0; /* Скругленные углы */
+    overflow: hidden;
+    opacity: 0.95;
+}
+
+.site-info-panel.hidden {
+    bottom: -200px;
+}
+
+.site-info-panel.visible {
+    bottom: 0;
+}
+
+.info-content {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    padding: 10px 20px;
+}
+
+.company-info {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.company-info img.logo {
+    width: 70px;
+    height: auto;
+    margin-right: 15px;
+}
+
+.toggle-panel {
+    position: fixed;
+    bottom: 0;
+    right: 20px;
+    background-color: #444;
+    color: #fff;
+    padding: 8px 15px;
+    cursor: pointer;
+    font-size: 18px;
+    border-radius: 8px 8px 0 0;
+    box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.5);
+    transition: bottom 0.5s ease, transform 0.2s ease;
+}
+
+.toggle-panel:hover {
+    transform: scale(1.1);
+    background-color: #555;
+}
+
+.site-info-panel.visible + .toggle-panel {
+    bottom: 240px;
+}
+
+/* Анимация при открытии панели */
+@keyframes siri-animation {
+    0% {
+        box-shadow: 0 0 10px rgba(255, 255, 255, 0);
+    }
+    50% {
+        box-shadow: 0 0 200px rgba(0, 150, 255, 0.8);
+    }
+    100% {
+        box-shadow: 0 0 10px rgba(255, 255, 255, 0);
+    }
+}
+
+.site-info-panel.visible {
+    animation: siri-animation 1.2s ease-in-out;
+}
+
+/* Адаптивность для мобильных устройств */
+@media (max-width: 768px) {
+    .site-info-panel {
+        font-size: 18px;
+        padding: 15px;
+    }
+    .toggle-panel {
+        font-size: 16px;
+        right: 10px;
+    }
+}
+
 
 /* Стили для баннера */
 .banner {
     width: 100%;
     height: 100px; /* Уменьшенная высота баннера */
-    background-image: url('https://raw.githubusercontent.com/nrksu1tan/xix-lectures/refs/heads/main/images/banner.png'); /* Фоновое изображение для баннера */
+    background-image: url('/images/banner.png'); /* Фоновое изображение для баннера */
     background-size: cover;
     background-position: center;
     position: absolute;
@@ -258,17 +417,30 @@ header {
     }
 }
 
+@media (min-width: 1024px) {
+    .modal-content {
+        width: 50%;
+        height: 90vh;
+        max-width: none;
+        max-height: none;
+        border-radius: px;
+        padding: 20px;
+    }
+}
 
 
-@media screen and (max-width: 768px) {
+
+
+
+@media (max-width: 768px) {
 
     body, html {
-        margin: 2px;
+        margin: 5px;
         padding: 1px;
-        height: 180%;
+        height: auto;
 
         font-family: Arial, sans-serif;
-        background-image: url('https://raw.githubusercontent.com/nrksu1tan/xix-lectures/refs/heads/main/images/fon.jpg');
+        background-image: url('/images/fon.jpg');
         background-size: cover;
         background-position: center;
         display: flex; /* Исправил ошибку здесь */
@@ -310,4 +482,3 @@ header {
 
 
 }
-

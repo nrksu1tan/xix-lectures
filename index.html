@@ -8,23 +8,25 @@
 </head>
 
 <body>
+
+    <div id="modal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <p id="modal-text">Текст лекции будет здесь.</p>
+            <button id="copy-button" class="copy-button">Копировать</button>
+        </div>
+    </div>
+
+
     <div class="container">
         <div class="header">
             <div class="banner"></div> <!-- Добавляем баннер -->
-
             <h1>«ХІХ ғасыр әдебиеті»</h1>
             <p>Дәрістер тізімі<br></p>
         </div>
 
         <div id="lecture-content" class="lecture-content"></div>
 
-        <div id="modal" class="modal">
-            <div class="modal-content">
-                <span class="close">&times;</span>
-                <p id="modal-text">Текст лекции будет здесь.</p>
-                <button id="copy-button" class="copy-button">Копировать</button>
-            </div>
-        </div>
 
 
 
@@ -54,7 +56,21 @@
         </div>
     </div>
 
-    <script src="JS/javas.js"></script> <!-- Подключаем JS -->
-</body>
+    <div id="site-info-panel" class="site-info-panel hidden">
+        <div class="info-content">
+            <div class="company-info">
+                <img src="images/logo.png" alt="Logo" class="logo"> <!-- Замените на путь к логотипу -->
+                <p>Сайт разработан компанией "NRKSU1TAN"</p>
 
+            </div>
+
+        </div>
+    </div>
+    <div class="toggle-panel" id="toggle-panel">
+        <span>&#9650;</span> <!-- Иконка стрелки -->
+    </div>
+
+    <script src="JS/javas.js"></script> <!-- Подключаем JS -->
+
+</div>
 </html>
