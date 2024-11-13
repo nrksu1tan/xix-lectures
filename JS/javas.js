@@ -61,14 +61,3 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 });
 
-
-document.querySelector('.toggle-panel').addEventListener('click', function() {
-    const siteInfoPanel = document.getElementById('site-info-panel');
-    const arrow = this.querySelector('span');
-
-    siteInfoPanel.classList.toggle('visible');
-    siteInfoPanel.classList.toggle('hidden');
-    
-    this.querySelector('span').style.transform = 
-    siteInfoPanel.classList.contains('visible') ? 'rotate(180deg)' : 'rotate(0deg)';
-});

@@ -9,7 +9,7 @@ body, html {
     display: flex; /* Исправил ошибку здесь */
     justify-content: center; /* Центровка по горизонтали */
     align-items: center; /* Центровка по вертикали */
-    
+
 }
 
 
@@ -18,6 +18,7 @@ body, html {
 
 /* Модальное окно - фоновая область */
 .modal {
+    
     display: none;
     position: fixed;
     z-index: 1000;
@@ -29,10 +30,12 @@ body, html {
     overflow: hidden;
     opacity: 0;
     transition: opacity 0.3s ease;
+
 }
 
 /* Показ модального окна */
 .modal.show {
+    overflow-y: hidden;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -141,47 +144,6 @@ body, html {
 }
 
 /* Псевдоэлементы для анимации вокруг контейнера */
-.container::before,
-.container::after {
-    content: '';
-    position: absolute;
-    top: -10%;
-    left: -10%;
-    width: 120%;
-    height: 120%;
-    border-radius: 50%;
-    z-index: -1; /* За контейнером */
-    pointer-events: none;
-    animation: pulse-border 3s infinite ease-in-out;
-}
-
-/* Первый слой сине-фиолетового цвета */
-.container::before {
-    background: radial-gradient(circle, rgba(0, 122, 255, 0.3), transparent 70%);
-    animation-delay: 0s;
-}
-
-/* Второй слой красно-оранжевого цвета */
-.container::after {
-    background: radial-gradient(circle, rgba(255, 0, 100, 0.3), transparent 70%);
-    animation-delay: 1.5s;
-}
-
-/* Анимация пульсации */
-@keyframes pulse-border {
-    0% {
-        transform: scale(1);
-        opacity: 0.8;
-    }
-    50% {
-        transform: scale(1.15);
-        opacity: 0.5;
-    }
-    100% {
-        transform: scale(1);
-        opacity: 0.8;
-    }
-}
 
 
 
@@ -346,16 +308,24 @@ header {
 }
 
 .lectures {
+    
     list-style-type: none;
     padding: 0;
 }
 
 .lectures li {
-    margin: 10px 0;
-    font-size: 15px;
+    border: 1px solid green;
+    border-radius: 6px; 
+    margin: 13px 2px;
+    font-size: 17px;
+    padding-top: 3px;
+    padding-bottom: 3px;
+    padding-right: 2px;
+    padding-left: 6px;
 }
 
 .lectures li a {
+    
     color: #ffcc00;
     text-decoration: none;
 }
