@@ -14,8 +14,38 @@ body, html {
 
 
 
+.slide-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 20px 0;
+}
+.slide-button {
+    margin: 0 10px;
+    cursor: pointer;
+}
+.slide-viewer {
+    padding: 10px;
+    border: 1px solid #ddd;
+    min-width: 200px;
+    text-align: center;
+}
+
+#slide-image {
+    max-width: 60%; /* Уменьшена максимальная ширина */
+    height: auto;
+    border-radius: 8px;
+    display: block; /* Делает изображение блочным элементом */
+    margin: 0 auto; /* Центрирует изображение */
+}
 
 
+.slide-gallery {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 20px 0;
+}
 /* Модальное окно - фоновая область */
 .modal {
     
