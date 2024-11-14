@@ -6,6 +6,15 @@ document.addEventListener('DOMContentLoaded', () => {
     const slideImage = document.getElementById('slide-image');
     const closeModalButton = document.querySelector('.close');
     const copyButton = document.getElementById('copy-button');
+    const preloader = document.getElementById('preloader');
+
+    // Wait for 3 seconds, then fade out preloader
+    setTimeout(() => {
+        preloader.classList.add('fade-out');
+        setTimeout(() => {
+            preloader.style.display = 'none';
+        }, 500); // Gives time for the fade-out animation
+    }, 3000);
 
     // Массив путей к изображениям для каждой лекции
     const lectureImages = {

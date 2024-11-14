@@ -1,19 +1,193 @@
 body, html {
-    margin: 30px;
-    padding: 0px;
+    margin: 0;
+    padding: 0;
     height: 100%;
     font-family: Arial, sans-serif;
     background-image: url('https://raw.githubusercontent.com/nrksu1tan/xix-lectures/refs/heads/main/images/fon.jpg');
     background-size: cover;
     background-position: center;
-    display: flex; /* Исправил ошибку здесь */
-    justify-content: center; /* Центровка по горизонтали */
-    align-items: center; /* Центровка по вертикали */
-
 }
 
+/* Preloader Styles */
+#preloader {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #000000cc; /* Semi-transparent black background */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1001;
+    transition: opacity 0.5s ease;
+}
 
+#preloader.fade-out {
+    opacity: 0;
+    pointer-events: none;
+}
 
+.loader {
+    width: 80px;
+    height: 80px;
+    border: 10px solid #f3f3f3;
+    border-top: 10px solid #ffcc00; /* Gold color */
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* Improved Container Styles */
+.container {
+    width: 90%;
+    max-width: 900px;
+    background-color: rgba(0, 0, 0, 0.8);
+    color: white;
+    margin: 40px auto;
+    padding: 40px;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+    position: relative;
+    border: 2px solid #ffcc00; /* Gold border to match theme */
+}
+
+/* Animated Gradient Border on Hover */
+.container::before, .container::after {
+    content: "";
+    position: absolute;
+    top: -2px;
+    left: -2px;
+    width: calc(100% + 4px);
+    height: calc(100% + 4px);
+    z-index: -1;
+    background: linear-gradient(45deg, #ffcc00, #ffffff, #ffcc00, #ffffff);
+    background-size: 400% 400%;
+    opacity: 0;
+    transition: opacity 0.6s;
+    border-radius: 12px;
+    animation: borderAnimation 20s infinite linear;
+}
+
+.container:hover::before, .container:hover::after {
+    opacity: 0.5;
+}
+
+@keyframes borderAnimation {
+    0% {
+        background-position: 0% 0%;
+    }
+    100% {
+        background-position: 400% 0%;
+    }
+}
+
+header {
+    text-align: center;
+    padding: 40px 0 20px;
+    position: relative;
+}
+
+/* Banner Styles */
+.banner {
+    width: 105%;
+    height: 100px;
+    background-image: url('https://raw.githubusercontent.com/nrksu1tan/xix-lectures/refs/heads/main/images/banka.png');
+    background-size: cover;
+    background-position: center;
+    position: absolute;
+    top: -20px;
+    left: -20px;
+    z-index: 0;
+    border-radius: 10px 10px 0 0;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    border-bottom: 3px solid #ffcc00;
+}
+
+header h1 {
+    margin: 80px 0 20px;
+    font-size: 3em;
+    z-index: 1;
+    position: relative;
+    text-shadow: 0 0 10px rgba(255,204,0,0.7);
+}
+
+header p {
+    margin-top: -20px;
+    text-align: center;
+    font-size: 1.2em;
+    position: relative;
+    z-index: 1;
+    text-shadow: 0 0 10px rgba(255,204,0,0.7);
+}
+
+/* Lectures List */
+.lectures {
+    list-style-type: none;
+    padding: 0;
+    margin-top: -20px;
+}
+
+.lectures li {
+    margin: 13px 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    border-radius: 6px;
+    padding: 10px 20px;
+    transition: background-color 0.3s, transform 0.3s;
+}
+
+.lectures li:hover {
+    background-color: rgba(255,204,0,0.8);
+    transform: scale(1.02);
+}
+
+.lectures li a {
+    color: #ffcc00;
+    text-decoration: none;
+    font-size: 1em;
+    font-weight: bold;
+    position: relative;
+}
+
+.lectures li a:hover {
+    text-decoration: underline;
+    color: #333;
+}
+
+/* Lecture Content */
+.lecture-content {
+    margin-top: 20px;
+    padding: 20px;
+    background-color: rgba(255,255,255,0.9); 
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    display: none;
+    color: #333; 
+    transition: opacity 0.4s ease, transform 0.4s ease;
+    transform: translateY(20px);
+    opacity: 0;
+}
+
+.lecture-content.show {
+    display: block;
+    transform: translateY(0);
+    opacity: 1;
+}
+
+/* Footer */
+footer.footer {
+    text-align: center;
+    font-size: 14px;
+    margin-top: 40px;
+    padding-top: 20px;
+    border-top: 1px solid #fff;
+}
+
+/* Slide Container for Modal Images */
 .slide-container {
     display: flex;
     align-items: center;
@@ -32,23 +206,15 @@ body, html {
 }
 
 #slide-image {
-    max-width: 60%; /* Уменьшена максимальная ширина */
+    max-width: 100%;
     height: auto;
     border-radius: 8px;
-    display: block; /* Делает изображение блочным элементом */
-    margin: 0 auto; /* Центрирует изображение */
+    display: block;
+    margin: 10px auto;
 }
 
-
-.slide-gallery {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin: 20px 0;
-}
-/* Модальное окно - фоновая область */
+/* Modal Window */
 .modal {
-    
     display: none;
     position: fixed;
     z-index: 1000;
@@ -60,21 +226,20 @@ body, html {
     overflow: hidden;
     opacity: 0;
     transition: opacity 0.3s ease;
-
 }
 
-/* Показ модального окна */
 .modal.show {
-    overflow-y: hidden;
     display: flex;
     justify-content: center;
     align-items: center;
     opacity: 1;
+    overflow-y: auto;
 }
 
-/* Контент модального окна */
+/* Modal Content with Glass Effect */
 .modal-content {
-    background-color: #1e1e1e;
+    background-color: rgba(255,255,255,0.9);
+    backdrop-filter: blur(10px);
     padding: 30px;
     border-radius: 10px;
     width: 80%;
@@ -83,40 +248,55 @@ body, html {
     overflow-y: auto;
     box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.5);
     position: relative;
-    color: #f1f1f1;
+    color: #333;
+    border: 2px solid #ffcc00; /* Gold border around modal */
+    animation: modalSlideIn 0.5s ease forwards;
 }
 
-/* Кнопка закрытия модального окна */
 .close {
-    color: #fff;
+    color: #333;
     position: absolute;
     top: 15px;
     right: 20px;
     font-size: 28px;
     font-weight: bold;
     cursor: pointer;
+    transition: color 0.3s ease;
 }
 
 .close:hover {
     color: #ffcc00;
 }
 
-/* Стили для текста лекции */
+.modal-title {
+    margin-top: 0;
+    margin-bottom: 20px;
+    font-size: 1.5em;
+    color: #333;
+    text-align: center;
+}
+
+/* Modal Text */
 #modal-text {
     text-align: left;
     line-height: 1.6;
+    margin-bottom: 20px;
 }
 
+/* Copy Button */
 .copy-button {
     display: inline-block;
-    background-color: #ffcc00; /* Золотистый цвет */
+    background-color: #ffcc00;
     color: black;
-    padding: 10px 20px;
+    padding: 12px 24px;
     margin-top: 20px;
     font-size: 16px;
+    font-weight: bold;
     border: none;
     border-radius: 5px;
     cursor: pointer;
+    position: relative;
+    overflow: hidden;
     transition: background-color 0.3s ease;
 }
 
@@ -124,17 +304,50 @@ body, html {
     background-color: #e6b800;
 }
 
+/* Sparkle Animation for the Copy Button */
+.copy-button::before {
+    content: "";
+    position: absolute;
+    left: -50px;
+    top: 50%;
+    width: 50px;
+    height: 200%;
+    background: radial-gradient(circle, #fff 10%, transparent 10%);
+    background-repeat: no-repeat;
+    background-size: 10px 10px;
+    background-position: center;
+    border-radius: 50%;
+    opacity: 0;
+    transform: translateY(-50%);
+    animation: none;
+}
+
+.copy-button:hover::before {
+    animation: sparkleAnimation 1s ease forwards;
+}
+
+@keyframes sparkleAnimation {
+    0% {
+        transform: translate(-50px, -50%) scale(0.5);
+        opacity: 1;
+    }
+    100% {
+        transform: translate(100px, -50%) scale(1.5);
+        opacity: 0;
+    }
+}
+
+/* Success Message Style (if used) */
 .success-message {
     margin-top: 15px;
     padding: 10px;
-    background-color: #4CAF50; /* Зеленый цвет */
+    background-color: #4CAF50; 
     color: white;
     border-radius: 5px;
     font-size: 14px;
     animation: fadeInOut 3s forwards;
 }
 
-/* Анимация появления и исчезновения сообщения */
 @keyframes fadeInOut {
     0% { opacity: 0; }
     10% { opacity: 1; }
@@ -142,343 +355,78 @@ body, html {
     100% { opacity: 0; }
 }
 
-/* Анимация появления модального окна */
-@keyframes modalFadeIn {
-    from { opacity: 0; transform: scale(0.9); }
-    to { opacity: 1; transform: scale(1); }
-}
-
-.modal.show .modal-content {
-    animation: modalFadeIn 0.3s ease;
-}
-
-
-
-/* Основной стиль контейнера */
-/* Основной стиль контейнера */
-/* Основной стиль контейнера */
-.container {
-    background-color: rgba(0, 0, 0, 0.8);
-    color: white;
-    width: 90%;
-    max-width: 900px;
-    padding: 40px;
-    border-radius: 10px;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
-    backdrop-filter: blur(10px);
-    min-height: 80vh;
-    margin: 20px auto;
-    border: 2px solid #ffcc00; /* Золотистая обводка */
-    position: relative;
-    z-index: 1;
-}
-
-/* Псевдоэлементы для анимации вокруг контейнера */
-
-
-
-
-
-
-
-
-
-
-
-
-
-header {
-    text-align: center;
-    padding-bottom: 20px;
-    position: relative; /* Относительное позиционирование для заголовка */
- 
-}
-
-
-.header img {
-    max-width: 100px;
-    border-radius: 50%;
-    position: absolute; /* Абсолютное позиционирование изображения */
-    top: -50px; /* Поднимаем изображение выше контейнера */
-    left: 50%; /* Центрируем изображение по горизонтали */
-    transform: translateX(-50%); /* Для идеального центрирования */
-    border: 3px solid white; /* Добавляем обводку к изображению */
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5); /* Тень для изображения */
-    backdrop-filter: blur(100px); /* Размытие фона под контейнером */
-    
-}
-
-/* Стиль для панели информации о сайте */
-/* Панель информации о сайте */
-.site-info-panel {
-    position: fixed;
-    bottom: -200px;
-    width: 100%;
-    background: linear-gradient(135deg, #333, #555); /* Градиент для более интересного фона */
-    color: #fff;
-    padding: 20px;
-    transition: bottom 0.5s ease, box-shadow 0.5s ease; /* Плавные переходы */
-    box-shadow: 0 -4px 15px rgba(0, 0, 0, 0.6);
-    font-size: 20px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    z-index: 10;
-    border-top: 2px solid rgba(255, 255, 255, 0.2);
-    border-radius: 10px 10px 0 0; /* Скругленные углы */
-    overflow: hidden;
-    opacity: 0.95;
-}
-
-.site-info-panel.hidden {
-    bottom: -200px;
-}
-
-.site-info-panel.visible {
-    bottom: 0;
-}
-
-.info-content {
-    display: flex;
-    justify-content: space-between;
-    width: 100%;
-    padding: 10px 20px;
-}
-
-.company-info {
-    display: flex;
-    flex-direction: column;
-    gap: 5px;
-}
-
-.company-info img.logo {
-    width: 70px;
-    height: auto;
-    margin-right: 15px;
-}
-
-.toggle-panel {
-    position: fixed;
-    bottom: 0;
-    right: 20px;
-    background-color: #444;
-    color: #fff;
-    padding: 8px 15px;
-    cursor: pointer;
-    font-size: 18px;
-    border-radius: 8px 8px 0 0;
-    box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.5);
-    transition: bottom 0.5s ease, transform 0.2s ease;
-}
-
-.toggle-panel:hover {
-    transform: scale(1.1);
-    background-color: #555;
-}
-
-.site-info-panel.visible + .toggle-panel {
-    bottom: 240px;
-}
-
-/* Анимация при открытии панели */
-@keyframes siri-animation {
-    0% {
-        box-shadow: 0 0 10px rgba(255, 255, 255, 0);
+/* Modal Slide In Animation */
+@keyframes modalSlideIn {
+    from {
+        transform: translateY(-50px);
+        opacity: 0;
     }
-    50% {
-        box-shadow: 0 0 200px rgba(0, 150, 255, 0.8);
-    }
-    100% {
-        box-shadow: 0 0 10px rgba(255, 255, 255, 0);
+    to {
+        transform: translateY(0);
+        opacity: 1;
     }
 }
 
-.site-info-panel.visible {
-    animation: siri-animation 1.2s ease-in-out;
-}
-
-/* Адаптивность для мобильных устройств */
+/* Responsive Design Adjustments */
 @media (max-width: 768px) {
-    .site-info-panel {
-        font-size: 18px;
-        padding: 15px;
+    .container {
+        width: 90%;
+        padding: 13px;
+        margin: 14px auto;
     }
-    .toggle-panel {
-        font-size: 16px;
-        right: 10px;
+
+    header h1 {
+        font-size: 2em;
+        margin: 100px 0 20px;
     }
-}
-
-
-/* Стили для баннера */
-.banner {
-    width: 100%;
-    height: 100px; /* Уменьшенная высота баннера */
-    background-image: url('https://raw.githubusercontent.com/nrksu1tan/xix-lectures/refs/heads/main/images/banka.png'); /* Фоновое изображение для баннера */
-    background-size: cover;
-    background-position: center;
-    position: absolute;
-    top: 0;
-    left: 0;
-    z-index: 0;
-    border-radius: 10px 10px 0 0; /* Скругляем верхние углы */
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3); /* Добавляем тень для глубины */
-    border-bottom: 3px solid #ffcc00;
-}
-.header h1{
-    margin: 30px 0;
-    text-align: center;
-    padding-top: 40px;
     
-}
-
-.header p{
-    margin-top: -20px;
-    text-align: center;
-}
-
-.lectures {
-    
-    list-style-type: none;
-    padding: 0;
-}
-
-.lectures li {
-    border: 1px solid green;
-    border-radius: 6px; 
-    margin: 13px 2px;
-    font-size: 17px;
-    padding-top: 3px;
-    padding-bottom: 3px;
-    padding-right: 2px;
-    padding-left: 6px;
-}
-
-.lectures li a {
-    
-    color: #ffcc00;
-    text-decoration: none;
-}
-
-.lectures li a:hover {
-    text-decoration: underline;
-}
-
-.lecture-content {
-    margin-top: 20px;
-    padding: 20px;
-    background-color: rgba(0, 0, 0, 0.1); /* Легкий фон */
-    border: 1px solid #ccc;
-    border-radius: 10px;
-    display: none; /* Изначально скрываем текст */
-    color: black; /* Цвет текста */
-}
-
-
-.footer {
-    position: absolute;
-    bottom: 20px;
-    left: 0;
-    right: 0;
-    text-align: center;
-    font-size: 14px;
-}
-
-.syllabus-button {
-    display: inline-block;
-    background-color: #ffcc00; /* Золотистый цвет кнопки */
-    color: black; /* Цвет текста */
-    padding: 10px 20px;
-    font-size: 16px;
-    border: none;
-    border-radius: 5px;
-    text-align: center;
-    margin-bottom: 20px;
-    cursor: pointer;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    transition: background-color 0.3s ease, filter 0.3s ease; /* Плавные переходы */
-}
-
-.syllabus-button:hover {
-    animation: sparkle 0.8s infinite; /* Анимация при наведении */
-}
-
-/* Анимация сверкающего эффекта */
-.syllabus-button:hover {
-    animation: sparkle 2s infinite; /* Длительность анимации 2 секунды */
-}
-
-@keyframes sparkle {
-    0%, 100% {
-        filter: brightness(1); /* Обычная яркость */
+    .lectures{
+        margin-top: -30px;
     }
-    50% {
-        filter: brightness(1.5); /* Сверкающая яркость */
+    .lectures li {
+        margin: 10px 0;
+        padding: 8px 16px;
+        font-size: 2em;
     }
-}
 
-@media (min-width: 1024px) {
     .modal-content {
-        width: 50%;
-        height: 90vh;
-        max-width: none;
-        max-height: none;
-        border-radius: px;
-        padding: 20px;
-    }
-}
-
-
-
-
-
-@media (max-width: 768px) {
-
-    body, html {
-        margin: 5px;
-        padding: 1px;
+        width: 90%;
         height: auto;
+        max-width: 100%;
+        padding: 20px;
+        font-size: 1.3em;
+    }
 
-        font-family: Arial, sans-serif;
-        background-image: url('https://raw.githubusercontent.com/nrksu1tan/xix-lectures/refs/heads/main/images/fon.jpg');
+    #slide-image {
+        max-width: 90%;
+        border-radius: 8px;
+    }
+
+    .copy-button {
+        width: 100%;
+        font-size: 1em;
+    }
+
+    .footer {
+        font-size: 12px;
+    }
+
+    .modal-text{
+        font-size: 2em;
+    }
+
+    .banner{
+        width: 100%;
+        height: 100px;
         background-size: cover;
         background-position: center;
-        display: flex; /* Исправил ошибку здесь */
-        justify-content: center; /* Центровка по горизонтали */
-        align-items: center; /* Центровка по вертикали */
-        
-    }
-
-
-
-    .container {
-        background-color: rgba(0, 0, 0, 0.8); /* Темный, полупрозрачный фон */
-        color: white;
-        width: 90%;
-        max-width: 100vw;
-        padding: 60px; /* Увеличенные отступы */
-        border-radius: 10px;
-        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5); /* Тень для выделения */
-        backdrop-filter: blur(10px); /* Размытие фона под контейнером */
-        min-height: 80vh; /* Минимальная высота контейнера - 80% высоты экрана */
-        margin: 20px 0; /* Отступы сверху и снизу */
-        border: 2px solid #ffcc00; /* Обводка: толщина 2px, сплошная линия, цвет золотистый */
-        position: relative; /* Относительное позиционирование контейнера */
-        
-    }
-
-
-    .header h1{
-        margin: 30px 0;
-        text-align: center;
-        padding-top: 40px;
-        font-size: 40px;
-    }
+        position: absolute;
+        top: 0px;
+        left: 0px;
+        z-index: 0;
+        border-radius: 10px 10px 0 0;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+        border-bottom: 3px solid #ffcc00;
+    } 
     
-    .header p{
-        margin-top: -20px;
-        text-align: center;
-    }
-
-
 }

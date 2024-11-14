@@ -4,38 +4,37 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ХІХ ғасыр</title>
+    <link rel="icon" href="https://cdn-icons-png.flaticon.com/512/8194/8194801.png" type="Image/x-icon">
     <link rel="stylesheet" href="css/style.css"> <!-- Подключаем CSS -->
 </head>
 
 <body>
 
-    <div id="modal" class="modal">
+    <!-- Preloader -->
+    <div id="preloader">
+        <div class="loader">
+            <div class="loader-inner"></div>
+        </div>
+    </div>
+
+    <div id="modal" class="modal" role="dialog" aria-modal="true" aria-labelledby="modal-title">
         <div class="modal-content">
-            <span class="close">&times;</span>
-
-
-            <img id="slide-image" src=""> 
-
+            <span class="close" aria-label="Close modal">&times;</span>
+            <h2 id="modal-title" class="modal-title">Лекция</h2>
+            <img id="slide-image" src="" alt="Lecture Image"> 
             <p id="modal-text">Текст лекции будет здесь.</p>
-            
-            <!-- Добавим секцию для слайдов -->
-             <button id="copy-button" class="copy-button">Копировать</button>
-
+            <button id="copy-button" class="copy-button">Копировать</button>
         </div>
     </div>
 
     <div class="container">
-        <div class="header">
+        <header class="header">
             <div class="banner"></div> <!-- Добавляем баннер -->
             <h1>«ХІХ ғасыр әдебиеті»</h1>
             <p>Дәрістер тізімі<br></p>
-        </div>
+        </header>
 
         <div id="lecture-content" class="lecture-content"></div>
-
-
-
-
 
         <ul class="lectures">
             <li><a href="#" class="lecture-link" data-lecture="1">•  1-дәріс. ХІХ ғасыр әдебиетінің негізгі зерттеу нысаны</a></li>
@@ -53,22 +52,15 @@
             <li><a href="#" class="lecture-link" data-lecture="13">•  13-дәріс. Шоқан Уәлиханов – қазақ әдебиеттану ғылымының негізін салушы</a></li>
             <li><a href="#" class="lecture-link" data-lecture="14">•  14-дәріс. Абай Құнанбаев шығармашылығы</a></li>
             <li><a href="#" class="lecture-link" data-lecture="15">•  15-дәріс. XIX ғасыр әдебиетін зерттеу</a></li>
-
         </ul>
 
-
-
-
-        <div class="footer">
+        <footer class="footer">
             <br>
             ҚАЗАҚ ҰЛТТЫҚ ҚЫЗДАР ПЕДАГОГИКАЛЫҚ УНИВЕРСИТЕТІ
-        </div>
+        </footer>
     </div>
-
-
-
 
     <script src="JS/javas.js"></script> <!-- Подключаем JS -->
 
-</div>
+</body>
 </html>
